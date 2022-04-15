@@ -1,17 +1,11 @@
 import { Router } from "express";
-
+import { renderLogin, renderSignup, signup} from "../controllers/authController";
 const router = Router(); 
 
-export const loginRouter = router.get('/entrar', (req, res) => {
-    res.render('login');
-});
+router.get('/entrar', renderLogin);
+router.get('/cadastro', renderSignup);
 
-export const signupRouter = router.get('/cadastro', (req, res) => {
-    res.render('signup');
-});
-
-export const aboutRouter = router.get('/sobre', (req, res) => {
-    res.render('about');
-});
+// rotas de ação
+router.post('/cadastro', signup);
 
 export default router;
